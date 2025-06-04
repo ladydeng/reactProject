@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
 
-import Home from "../views/index/index"
+import Home from "../views/home/home"
 import Login from "../views/login/login"
 import ErrorPage from "../views/errorPage/errorPage"
 

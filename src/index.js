@@ -6,6 +6,7 @@ import { RouterProvider} from "react-router-dom"
 import router from "./router/index 01"
 import axios from "./axios"
 
+// 注册全局参数
 React.Component.prototype.$axios = axios
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,4 @@ root.render(
   // </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

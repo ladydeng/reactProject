@@ -1,5 +1,7 @@
 import axios from "axios";
 import {BASE_URL, TIMEOUT} from "./config"
+// let messageFlag = false
+
  
 const instance = axios.create({
     timeout: TIMEOUT,
@@ -12,6 +14,10 @@ instance.interceptors.request.use(config => {
     var token = localStorage.getItem("token")
     if (token) {
         config.headers['token'] = token
+    }else{
+        console.log("本地token不存在~，请重新登录！")
+        //  return Promise.reject(new Error("未登录，请先登录"));  //阻止请求发送（这一步可以结合页面，在页面上判断是否需要拦截未登录状态）
+        // window.location.href = "/login"
     }
 	// 如果还需要在请求头内添加其他内容可以自己添加
     // config.headers['api'] = api
@@ -32,7 +38,7 @@ instance.interceptors.response.use(response => {
     if (error.response) {
 		// 如401我就让用户返回登录页
         if (error.response.status === 401) {
-            this.props.history.push('/login');
+            window.location.href = "/login"
         }
         return Promise.reject(error)
     } else {
